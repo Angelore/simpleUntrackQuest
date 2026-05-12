@@ -3,6 +3,13 @@ private final func TryTrackQuestOrSetWaypoint() -> Void {
   if this.IsFastTravelEnabled() {
     return;
   };
+  if this.IsDelamainTaxiEnabled() {
+    this.TrackDelamainTaxiMappin();
+    this.UpdateTravelDestination();
+    this.UpdateSelectedMappinTooltip();
+    this.PlaySound(n"MapPin", n"OnCreate");
+    return;
+  }
   if this.selectedMappin != null {
     if this.selectedMappin.IsInCollection() && this.selectedMappin.IsCollection() || !this.selectedMappin.IsInCollection() {
       if this.CanQuestTrackMappin(this.selectedMappin) {
